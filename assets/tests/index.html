@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nzema Guest House | Coastal Comfort at Opeikuma</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Syne:wght@400;700;800&display=swap');
+
+        :root {
+            --accent: #14b8a6;
+            /* Teal Coastal */
+            --warm: #fdfaf6;
+            --clay: #78350f;
+            --dark: #121212;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--warm);
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-heading {
+            font-family: 'Syne', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .bottom-navigation {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            width: 95%;
+            max-width: 500px;
+            border-radius: 50px;
+        }
+
+        .nav-icon {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            color: #666;
+        }
+
+        .nav-item.active .nav-icon {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .hero-title {
+            background: linear-gradient(to right, #0d9488, #78350f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .room-image-container {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        .booking-dot {
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            box-shadow: 0 0 10px var(--accent);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 10px rgba(20, 184, 166, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(20, 184, 166, 0);
+            }
+        }
+
+        .texture-bg {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--warm);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 20px;
+        }
+
+        #reservation-panel {
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #reservation-panel.open {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="texture-bg">
+
+    <!-- Bottom Navigation Bar -->
+    <nav class="bottom-navigation glass-nav px-8 py-3 flex justify-between items-center">
+        <a href="#home" class="nav-item active flex flex-col items-center group">
+            <i class="fas fa-compass text-xl nav-icon"></i>
+            <span class="text-[9px] font-bold uppercase mt-1">Explore</span>
+        </a>
+        <a href="#about" class="nav-item flex flex-col items-center group">
+            <i class="fas fa-info-circle text-xl nav-icon"></i>
+            <span class="text-[9px] font-bold uppercase mt-1">History</span>
+        </a>
+        <button onclick="toggleReservation()"
+            class="w-14 h-14 bg-teal-600 text-white rounded-full flex items-center justify-center -mt-10 border-4 border-[#fdfaf6] shadow-xl hover:bg-teal-700 transition-all active:scale-90">
+            <i class="fas fa-plus text-xl"></i>
+        </button>
+        <a href="#stay" class="nav-item flex flex-col items-center group">
+            <i class="fas fa-leaf text-xl nav-icon"></i>
+            <span class="text-[9px] font-bold uppercase mt-1">Stays</span>
+        </a>
+        <a href="#contact" class="nav-item flex flex-col items-center group">
+            <i class="fas fa-paper-plane text-xl nav-icon"></i>
+            <span class="text-[9px] font-bold uppercase mt-1">Visit</span>
+        </a>
+    </nav>
+
+    <!-- Header / Brand -->
+    <header class="fixed top-0 left-0 w-full z-[900] px-6 py-4 flex justify-between items-center pointer-events-none">
+        <div class="pointer-events-auto">
+            <h2 class="text-xl font-heading font-extrabold tracking-tighter">NZEMA <span class="text-teal-600">GH</span>
+            </h2>
+        </div>
+        <div class="pointer-events-auto">
+            <span
+                class="text-xs font-bold uppercase tracking-widest bg-white/50 backdrop-blur px-4 py-2 rounded-full border border-black/5">Opeikuma,
+                Kasoa</span>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen relative flex items-center pt-20">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right" data-aos-duration="1200">
+                <div class="flex items-center gap-2 mb-6">
+                    <span class="booking-dot"></span>
+                    <span class="text-sm font-bold uppercase tracking-[0.3em] text-teal-800">Authentic Heritage
+                        Hospitality</span>
+                </div>
+                <h1 class="text-6xl md:text-8xl font-heading leading-none mb-8">Home <br><span class="hero-title">Away
+                        from Home.</span></h1>
+                <p class="text-lg text-gray-600 mb-10 max-w-md">
+                    Nestled in the quiet heights of Opeikuma, Nzema Guest House offers a serene escape from the Kasoa
+                    bustle.
+                </p>
+                <div class="flex gap-4">
+                    <button onclick="toggleReservation()"
+                        class="bg-black text-white px-8 py-4 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-teal-600 transition-colors">Book
+                        a Stay</button>
+                    <a href="#stay"
+                        class="px-8 py-4 border border-black/10 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-black hover:text-white transition-all">The
+                        Rooms</a>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left" data-aos-duration="1200">
+                <div class="room-image-container rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="assets/hero.avif" alt="Interior" class="w-full h-[600px] object-cover">
+                </div>
+                <div
+                    class="absolute -bottom-6 -left-6 bg-teal-600 p-8 rounded-3xl text-white shadow-xl hidden md:block">
+                    <p class="text-5xl font-heading mb-1">0%</p>
+                    <p class="text-xs uppercase font-bold tracking-widest opacity-80">Noise Pollution</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience / About -->
+    <section id="about" class="py-32 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-12">
+                <div class="md:col-span-5" data-aos="fade-up">
+                    <h2 class="text-4xl font-heading mb-8">A Legacy of <br><span class="text-teal-600">The West</span>
+                        In Kasoa</h2>
+                    <p class="text-gray-500 leading-relaxed mb-6">
+                        The Nzema people are known for their warmth and meticulous care. At Nzema Guest House, we bring
+                        that Western Region hospitality to the heart of Opeikuma.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-center gap-3 font-bold text-sm uppercase">
+                            <i class="fas fa-check-circle text-teal-600"></i> Secure Private Parking
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-sm uppercase">
+                            <i class="fas fa-check-circle text-teal-600"></i> Fully Air-Conditioned
+                        </li>
+                        <li class="flex items-center gap-3 font-bold text-sm uppercase">
+                            <i class="fas fa-check-circle text-teal-600"></i> Local & Continental Cuisine
+                        </li>
+                    </ul>
+                </div>
+                <div class="md:col-span-7 grid grid-cols-2 gap-4">
+                    <div class="space-y-4 pt-12">
+                        <img src="assets/pic1.avif" alt="Exterior"
+                            class="rounded-2xl h-64 w-full object-cover shadow-lg" data-aos="zoom-in"
+                            data-aos-delay="100">
+                        <img src="assets/pic2.avif" alt="Living Room"
+                            class="rounded-2xl h-80 w-full object-cover shadow-lg" data-aos="zoom-in"
+                            data-aos-delay="200">
+                    </div>
+                    <div class="space-y-4">
+                        <img src="assets/pic3.avif" alt="Bathroom"
+                            class="rounded-2xl h-80 w-full object-cover shadow-lg" data-aos="zoom-in"
+                            data-aos-delay="300">
+                        <img src="assets/pic4.avif" alt="Dining Area"
+                            class="rounded-2xl h-80 w-full object-cover shadow-lg" data-aos="zoom-in"
+                            data-aos-delay="300">
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stays / Rooms -->
+    <section id="stay" class="py-32 bg-stone-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-teal-600 mb-2 block">Our
+                        Sanctuary</span>
+                    <h2 class="text-5xl font-heading">Refined Comfort</h2>
+                </div>
+                <p class="max-w-xs text-gray-500 text-sm italic">Each room is curated with local art and modern
+                    amenities to ensure your peace of mind.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Room 1 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden border border-black/5 hover:shadow-2xl transition-all"
+                    data-aos="fade-up">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/bedroom1.avif"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            Standard</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading mb-4">The Village Suite</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">GHS 350 <span class="text-xs text-gray-400 font-normal">/
+                                    day</span></span>
+                            <button
+                                class="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 2 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden border border-black/5 hover:shadow-2xl transition-all"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/bedroom2.avif"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-teal-600 text-white px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            Popular</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading mb-4">Oceanic Deluxe</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">GHS 550 <span class="text-xs text-gray-400 font-normal">/
+                                    day</span></span>
+                            <button
+                                class="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Room 3 -->
+                <div class="group bg-white rounded-[2rem] overflow-hidden border border-black/5 hover:shadow-2xl transition-all"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="assets/bedroom3.avif"
+                            class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            Executive</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-heading mb-4">Paramount Wing</h3>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold">GHS 850 <span class="text-xs text-gray-400 font-normal">/
+                                    day</span></span>
+                            <button
+                                class="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / Location -->
+    <section id="contact" class="py-32 relative overflow-hidden">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="bg-dark rounded-[3rem] bg-zinc-900 text-white p-12 md:p-20 relative overflow-hidden">
+                <div class="grid md:grid-cols-2 gap-12 relative z-10">
+                    <div>
+                        <h2 class="text-5xl font-heading mb-8">Stop By <br><span class="text-teal-500">Opeikuma</span>
+                        </h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-location-arrow mt-1 text-teal-500"></i>
+                                <div>
+                                    <p class="font-bold uppercase text-xs opacity-50 mb-1">Our Location</p>
+                                    <p class="text-lg">Near the Opeikuma Clinic, Kasoa-Opeikuma Road</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <i class="fas fa-phone-alt mt-1 text-teal-500"></i>
+                                <div>
+                                    <p class="font-bold uppercase text-xs opacity-50 mb-1">Direct Line</p>
+                                    <p class="text-lg">+233 55 123 4567</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-12 flex gap-4">
+                            <a href="#"
+                                class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition-all"><i
+                                    class="fab fa-instagram"></i></a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition-all"><i
+                                    class="fab fa-facebook-f"></i></a>
+                            <a href="#"
+                                class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-teal-500 hover:border-teal-500 transition-all"><i
+                                    class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-nav rounded-3xl p-8 border-white/10">
+                            <h4 class="text-xl font-heading mb-6">Inquiry Form</h4>
+                            <form class="space-y-4">
+                                <input type="text" placeholder="Your Name"
+                                    class="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl outline-none focus:border-teal-500 transition-all">
+                                <input type="email" placeholder="Email"
+                                    class="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl outline-none focus:border-teal-500 transition-all">
+                                <textarea placeholder="Message" rows="4"
+                                    class="w-full bg-white/5 border border-white/10 px-6 py-4 rounded-2xl outline-none focus:border-teal-500 transition-all"></textarea>
+                                <button
+                                    class="w-full bg-teal-600 py-4 rounded-2xl font-bold uppercase tracking-widest text-xs hover:bg-teal-700 transition-all">Send
+                                    Request</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Abstract Shape -->
+                <div
+                    class="absolute top-0 right-0 w-96 h-96 bg-teal-600/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2">
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-20 pb-32 text-gray-400 text-[10px] uppercase tracking-widest">
+            &copy; 2024 Nzema Guest House. Heritage & Comfort.
+        </div>
+    </section>
+
+    <!-- Bottom Reservation Panel (Slide Up) -->
+    <div id="reservation-panel"
+        class="fixed inset-x-0 bottom-0 z-[1100] h-[80vh] bg-white rounded-t-[3rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] p-8">
+        <div class="w-12 h-1 bg-gray-200 mx-auto rounded-full mb-8 cursor-pointer" onclick="toggleReservation()"></div>
+        <div class="max-w-lg mx-auto overflow-y-auto h-full pb-20">
+            <h2 class="text-3xl font-heading mb-2">Book Your Retreat</h2>
+            <p class="text-gray-500 text-sm mb-8">Opeikuma is calling. We'll confirm your reservation via WhatsApp or
+                Call within 30 minutes.</p>
+
+            <div class="space-y-6">
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">Choose Your Wing</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button class="border-2 border-teal-600 p-4 rounded-2xl text-left bg-teal-50">
+                            <p class="font-bold text-xs uppercase">Village Suite</p>
+                            <p class="text-xs text-gray-500 mt-1">GHS 350/night</p>
+                        </button>
+                        <button
+                            class="border border-black/10 p-4 rounded-2xl text-left hover:border-teal-600 transition-all">
+                            <p class="font-bold text-xs uppercase">Oceanic Deluxe</p>
+                            <p class="text-xs text-gray-400 mt-1">GHS 550/night</p>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">Arrival</label>
+                        <input type="date" class="w-full border border-black/10 p-4 rounded-2xl bg-stone-50">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold uppercase tracking-[0.2em] mb-2 block">Guests</label>
+                        <select class="w-full border border-black/10 p-4 rounded-2xl bg-stone-50">
+                            <option>1 Person</option>
+                            <option>2 Persons</option>
+                            <option>3+ Persons</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="bg-black text-white p-6 rounded-2xl">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-xs font-bold uppercase opacity-60">Estimated Total</span>
+                        <span class="text-2xl font-heading text-teal-400">GHS 350</span>
+                    </div>
+                    <button class="w-full bg-teal-600 py-4 rounded-xl font-bold uppercase tracking-widest text-xs"
+                        onclick="confirmReservation()">Proceed to Secure Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI feedback -->
+    <div id="toast"
+        class="fixed top-8 left-1/2 -translate-x-1/2 bg-black text-white px-8 py-4 rounded-full text-xs font-bold uppercase tracking-widest z-[3000] opacity-0 transition-all duration-500 pointer-events-none">
+        Booking request sent successfully!
+    </div>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Reservation Panel Toggle
+        function toggleReservation() {
+            const panel = document.getElementById('reservation-panel');
+            panel.classList.toggle('open');
+        }
+
+        function confirmReservation() {
+            toggleReservation();
+            const toast = document.getElementById('toast');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translate(-50%, 20px)';
+
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translate(-50%, 0)';
+            }, 3000);
+        }
+
+        // Active Navigation
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').includes(current)) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

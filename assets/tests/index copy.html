@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nzema Guest House | Your Home Away From Home in Kasoa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Bricolage+Grotesque:wght@500;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --accent: #1e40af;
+            /* Deep Blue */
+            --warm: #fef3c7;
+            /* Warm Sand */
+            --text: #0f172a;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #fff;
+            color: var(--text);
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        .heading-font {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .amenity-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+        }
+
+        .amenity-card:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .floating-action {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(30, 64, 175, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(30, 64, 175, 0);
+            }
+        }
+
+        .btn-shadow {
+            box-shadow: 4px 4px 0px var(--text);
+        }
+
+        .btn-shadow:active {
+            box-shadow: 0px 0px 0px var(--text);
+            transform: translate(2px, 2px);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50">
+
+    <!-- Navigation -->
+    <nav
+        class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100 py-4 px-6 lg:px-20 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <div class="bg-blue-800 text-white p-2 rounded-lg">
+                <i data-lucide="home" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xl font-extrabold tracking-tight heading-font">NZEMA <span class="text-blue-700">GUEST
+                    HOUSE</span></span>
+        </div>
+        <div class="hidden md:flex gap-10 text-sm font-semibold text-slate-600">
+            <a href="#about" class="nav-link hover:text-blue-800">About</a>
+            <a href="#rooms" class="nav-link hover:text-blue-800">Rooms</a>
+            <a href="#services" class="nav-link hover:text-blue-800">Services</a>
+            <a href="#contact" class="nav-link hover:text-blue-800">Location</a>
+        </div>
+        <button
+            class="bg-blue-700 text-white px-6 py-2.5 rounded-full font-bold text-sm hover:bg-blue-800 transition-colors hidden sm:block">
+            Book a Room
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section min-h-screen flex items-center pt-20 px-6 lg:px-20">
+        <div class="max-w-3xl text-white">
+            <div
+                class="inline-block bg-blue-600/30 backdrop-blur-sm border border-blue-400/30 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-6 reveal">
+                Opeikuma's Hidden Gem
+            </div>
+            <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6 reveal" style="transition-delay: 0.2s">
+                Comfortable Stays <br> In The Heart <span class="text-blue-300">Of Kasoa</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-200 mb-10 max-w-xl reveal" style="transition-delay: 0.4s">
+                Experience the warmth of Nzema hospitality. Secure, serene, and perfectly situated for your Kasoa visit.
+            </p>
+            <div class="flex flex-wrap gap-4 reveal" style="transition-delay: 0.6s">
+                <button class="bg-white text-blue-900 px-8 py-4 rounded-xl font-bold btn-shadow transition-all">Check
+                    Availability</button>
+                <button
+                    class="bg-transparent border-2 border-white/50 hover:border-white px-8 py-4 rounded-xl font-bold transition-all">Take
+                    a Tour</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="about" class="py-24 px-6 lg:px-20 bg-white">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            <div class="grid grid-cols-2 gap-4 reveal">
+                <div class="space-y-4 pt-12">
+                    <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800"
+                        class="rounded-2xl shadow-lg" alt="Room Interior">
+                    <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&q=80&w=800"
+                        class="rounded-2xl shadow-lg" alt="Bathroom">
+                </div>
+                <div class="space-y-4">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800"
+                        class="rounded-2xl shadow-lg" alt="Lobby">
+                    <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                        <p class="text-blue-900 font-bold text-2xl mb-1">100%</p>
+                        <p class="text-blue-700 text-sm font-semibold uppercase tracking-wider">Cleanliness Rate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal" style="transition-delay: 0.2s">
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 text-slate-900">Why choose Nzema Guest House?</h2>
+                <p class="text-slate-600 text-lg leading-relaxed mb-8">
+                    Strategically located at Opeikuma, we provide a quiet escape from the Kasoa bustle while keeping you
+                    close to everything that matters. Our mission is to provide premium comfort at affordable rates.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-3 font-semibold text-slate-700">
+                        <div class="bg-green-100 text-green-600 p-1 rounded-full"><i data-lucide="check"
+                                class="w-4 h-4"></i></div>
+                        Standby Generator for 24/7 Power
+                    </li>
+                    <li class="flex items-center gap-3 font-semibold text-slate-700">
+                        <div class="bg-green-100 text-green-600 p-1 rounded-full"><i data-lucide="check"
+                                class="w-4 h-4"></i></div>
+                        Secure Parking with 24-hour Security
+                    </li>
+                    <li class="flex items-center gap-3 font-semibold text-slate-700">
+                        <div class="bg-green-100 text-green-600 p-1 rounded-full"><i data-lucide="check"
+                                class="w-4 h-4"></i></div>
+                        Spacious, Air-conditioned Rooms
+                    </li>
+                </ul>
+                <a href="#contact"
+                    class="inline-flex items-center gap-2 text-blue-700 font-bold hover:gap-4 transition-all">
+                    Find us on Google Maps <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Grid -->
+    <section id="services" class="py-24 px-6 lg:px-20 bg-slate-50">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+            <h2 class="text-4xl font-bold mb-4">Exceptional Services</h2>
+            <p class="text-slate-500">Everything you need for a restful stay in Opeikuma, designed with your comfort in
+                mind.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="amenity-card bg-white p-8 rounded-3xl reveal" style="transition-delay: 0.1s">
+                <i data-lucide="wind" class="w-10 h-10 mb-6 text-blue-600"></i>
+                <h3 class="text-xl font-bold mb-3">Air Conditioning</h3>
+                <p class="text-sm opacity-80 leading-relaxed">Stay cool in the Ghanaian heat with our high-efficiency AC
+                    units in every room.</p>
+            </div>
+            <div class="amenity-card bg-white p-8 rounded-3xl reveal" style="transition-delay: 0.2s">
+                <i data-lucide="shield-check" class="w-10 h-10 mb-6 text-blue-600"></i>
+                <h3 class="text-xl font-bold mb-3">Total Security</h3>
+                <p class="text-sm opacity-80 leading-relaxed">CCTV surveillance and professional security personnel
+                    ensure your peace of mind.</p>
+            </div>
+            <div class="amenity-card bg-white p-8 rounded-3xl reveal" style="transition-delay: 0.3s">
+                <i data-lucide="tv-2" class="w-10 h-10 mb-6 text-blue-600"></i>
+                <h3 class="text-xl font-bold mb-3">Premium DSTV</h3>
+                <p class="text-sm opacity-80 leading-relaxed">Never miss a match or your favorite shows with our
+                    flat-screen TVs and full cable.</p>
+            </div>
+            <div class="amenity-card bg-white p-8 rounded-3xl reveal" style="transition-delay: 0.4s">
+                <i data-lucide="coffee" class="w-10 h-10 mb-6 text-blue-600"></i>
+                <h3 class="text-xl font-bold mb-3">Daily Breakfast</h3>
+                <p class="text-sm opacity-80 leading-relaxed">Start your day right with our freshly prepared local and
+                    continental breakfast options.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Room Cards (Horizontal Style) -->
+    <section id="rooms" class="py-24 px-6 lg:px-20 bg-white">
+        <h2 class="text-4xl font-bold mb-12 reveal">Our Cozy Rooms</h2>
+
+        <div class="space-y-12">
+            <!-- Room 1 -->
+            <div class="group grid lg:grid-cols-5 bg-slate-50 rounded-[2rem] overflow-hidden reveal">
+                <div class="lg:col-span-2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7eaa511?auto=format&fit=crop&q=80&w=1000"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt="Standard Room">
+                </div>
+                <div class="lg:col-span-3 p-10 flex flex-col justify-center">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Standard Queen</h3>
+                            <div class="flex gap-4 text-xs font-bold text-slate-400 uppercase tracking-tighter">
+                                <span class="flex items-center gap-1"><i data-lucide="user" class="w-3"></i> 2
+                                    Guests</span>
+                                <span class="flex items-center gap-1"><i data-lucide="maximize" class="w-3"></i> 24
+                                    sqm</span>
+                            </div>
+                        </div>
+                        <p class="text-2xl font-bold text-blue-700">GH₵250<span
+                                class="text-sm font-normal text-slate-400">/night</span></p>
+                    </div>
+                    <p class="text-slate-600 mb-8 max-w-lg">Perfect for solo travelers or couples. Includes a
+                        comfortable queen bed, writing desk, and en-suite bathroom.</p>
+                    <div>
+                        <button
+                            class="bg-blue-700 text-white px-10 py-3.5 rounded-xl font-bold btn-shadow hover:bg-blue-800 transition-all">Book
+                            This Room</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Room 2 -->
+            <div class="group grid lg:grid-cols-5 bg-slate-50 rounded-[2rem] overflow-hidden reveal"
+                style="transition-delay: 0.2s">
+                <div class="lg:col-span-2 lg:order-2 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=1000"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        alt="Deluxe Room">
+                </div>
+                <div class="lg:col-span-3 lg:order-1 p-10 flex flex-col justify-center">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Deluxe King Suite</h3>
+                            <div class="flex gap-4 text-xs font-bold text-slate-400 uppercase tracking-tighter">
+                                <span class="flex items-center gap-1"><i data-lucide="user" class="w-3"></i> 3
+                                    Guests</span>
+                                <span class="flex items-center gap-1"><i data-lucide="maximize" class="w-3"></i> 40
+                                    sqm</span>
+                            </div>
+                        </div>
+                        <p class="text-2xl font-bold text-blue-700">GH₵450<span
+                                class="text-sm font-normal text-slate-400">/night</span></p>
+                    </div>
+                    <p class="text-slate-600 mb-8 max-w-lg">Our most spacious option featuring a king-sized bed,
+                        mini-fridge, larger seating area, and premium views.</p>
+                    <div>
+                        <button
+                            class="bg-blue-700 text-white px-10 py-3.5 rounded-xl font-bold btn-shadow hover:bg-blue-800 transition-all">Book
+                            This Room</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location / Contact -->
+    <section id="contact" class="py-24 px-6 lg:px-20 bg-slate-900 text-white overflow-hidden relative">
+        <div class="absolute -top-24 -right-24 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl"></div>
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-4xl font-bold mb-8">Visit Us at Opeikuma</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start gap-6">
+                        <div class="bg-white/10 p-4 rounded-2xl"><i data-lucide="map-pin" class="text-blue-400"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Our Address</h4>
+                            <p class="text-slate-400">Off the Winneba Road, Opeikuma Junction, Kasoa.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6">
+                        <div class="bg-white/10 p-4 rounded-2xl"><i data-lucide="phone" class="text-blue-400"></i></div>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Direct Line</h4>
+                            <p class="text-slate-400">+233 (0) 20 123 4567</p>
+                            <p class="text-slate-400">+233 (0) 55 987 6543</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6">
+                        <div class="bg-white/10 p-4 rounded-2xl"><i data-lucide="clock" class="text-blue-400"></i></div>
+                        <div>
+                            <h4 class="font-bold text-xl mb-1">Check-in / Check-out</h4>
+                            <p class="text-slate-400">Check-in: 2:00 PM</p>
+                            <p class="text-slate-400">Check-out: 12:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="h-[400px] bg-slate-800 rounded-[2.5rem] relative overflow-hidden border border-white/10 shadow-2xl reveal"
+                style="transition-delay: 0.2s">
+                <!-- Map Placeholder -->
+                <div class="absolute inset-0 flex items-center justify-center bg-slate-700">
+                    <div class="text-center">
+                        <i data-lucide="map" class="w-16 h-16 mx-auto mb-4 text-blue-500 opacity-50"></i>
+                        <p class="font-bold text-slate-400">Interactive Google Map Integration</p>
+                        <button class="mt-4 bg-blue-700 px-6 py-2 rounded-full text-sm">Open in Maps</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Simple Footer -->
+    <footer class="py-12 bg-black text-white text-center border-t border-white/5">
+        <div class="flex items-center justify-center gap-3 mb-6">
+            <i data-lucide="home" class="w-6 h-6 text-blue-500"></i>
+            <span class="text-xl font-bold heading-font">NZEMA GUEST HOUSE</span>
+        </div>
+        <p class="text-slate-500 text-sm mb-8 italic">"Your Home Away From Home in Kasoa"</p>
+        <div class="flex justify-center gap-8 text-xs font-bold text-slate-500 uppercase tracking-widest mb-8">
+            <a href="#" class="hover:text-white">Rooms</a>
+            <a href="#" class="hover:text-white">Amenities</a>
+            <a href="#" class="hover:text-white">Gallery</a>
+            <a href="#" class="hover:text-white">Directions</a>
+        </div>
+        <p class="text-slate-700 text-[10px]">&copy; 2026 NZEMA GUEST HOUSE. DESIGNED FOR COMFORT.</p>
+    </footer>
+
+    <!-- Floating Mobile Booking -->
+    <div class="fixed bottom-6 right-6 z-50 sm:hidden">
+        <button class="floating-action bg-blue-700 text-white p-4 rounded-full shadow-2xl">
+            <i data-lucide="calendar-days"></i>
+        </button>
+    </div>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Reveal on scroll logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Interaction for Book Buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function (e) {
+                if (this.innerText.includes('Book') || this.innerText.includes('Availability')) {
+                    const message = document.createElement('div');
+                    message.className = 'fixed top-10 left-1/2 -translate-x-1/2 bg-blue-900 text-white px-8 py-4 rounded-2xl shadow-2xl z-[100] font-bold animate-bounce border border-blue-400';
+                    message.innerText = 'Connecting to Booking Desk...';
+                    document.body.appendChild(message);
+                    setTimeout(() => message.remove(), 2500);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

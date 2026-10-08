@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nzema Guest House | Your Home in Opeikuma, Kasoa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Bricolage+Grotesque:wght@400;700&display=swap');
+
+        :root {
+            --warm-terracotta: #E07A5F;
+            --deep-teal: #3D405B;
+            --sand-beige: #F4F1DE;
+            --leaf-green: #81B29A;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--sand-beige);
+            color: var(--deep-teal);
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+        }
+
+        .hero-clip {
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 {
+            transition-delay: 100ms;
+        }
+
+        .stagger-2 {
+            transition-delay: 200ms;
+        }
+
+        .stagger-3 {
+            transition-delay: 300ms;
+        }
+
+        .btn-warm {
+            background-color: var(--warm-terracotta);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-warm:hover {
+            background-color: #c9654d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(224, 122, 95, 0.3);
+        }
+
+        .card-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Custom marker for the active section */
+        .nav-indicator {
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 4px;
+            background: var(--warm-terracotta);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover .nav-indicator {
+            width: 100%;
+        }
+
+        .floating-card {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+    </style>
+</head>
+
+<body class="overflow-x-hidden">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 px-4 py-6">
+        <div
+            class="max-w-6xl mx-auto flex justify-between items-center bg-white/80 backdrop-blur-md rounded-2xl px-6 py-3 shadow-sm border border-white/50">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-10 h-10 bg-[#E07A5F] rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    N</div>
+                <span class="font-bold text-xl tracking-tight uppercase">Nzema <span class="font-light">Guest
+                        House</span></span>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#home" class="nav-item relative text-sm font-semibold uppercase tracking-wider">Home <div
+                        class="nav-indicator"></div></a>
+                <a href="#rooms" class="nav-item relative text-sm font-semibold uppercase tracking-wider">Rooms <div
+                        class="nav-indicator"></div></a>
+                <a href="#amenities" class="nav-item relative text-sm font-semibold uppercase tracking-wider">Amenities
+                    <div class="nav-indicator"></div></a>
+                <a href="#contact" class="nav-item relative text-sm font-semibold uppercase tracking-wider">Contact <div
+                        class="nav-indicator"></div></a>
+            </nav>
+
+            <a href="tel:+233000000000" class="btn-warm px-6 py-2.5 rounded-xl font-bold text-sm hidden md:block">
+                CALL TO BOOK
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=2070"
+                alt="Guest House Exterior" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#3D405B]/80 to-transparent"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-3xl text-white">
+                <span
+                    class="reveal inline-block px-4 py-1.5 bg-[#81B29A] rounded-full text-xs font-bold uppercase tracking-widest mb-6">Welcome
+                    to Opeikuma</span>
+                <h1 class="reveal stagger-1 text-5xl md:text-7xl font-bold mb-6 leading-[1.1]">Modern Comfort, <br><span
+                        class="text-[#F2CC8F]">Nzema Hospitality.</span></h1>
+                <p class="reveal stagger-2 text-lg md:text-xl mb-10 text-white/80 max-w-xl font-light">
+                    Experience a peaceful stay in the heart of Kasoa. Whether for a quick transit or a weekend escape,
+                    we provide the comfort you deserve.
+                </p>
+                <div class="reveal stagger-3 flex flex-wrap gap-4">
+                    <button class="btn-warm px-8 py-4 rounded-2xl font-bold">RESERVE A ROOM</button>
+                    <button
+                        class="bg-white/10 backdrop-blur-md border border-white/30 px-8 py-4 rounded-2xl font-bold hover:bg-white hover:text-[#3D405B] transition-all">VIEW
+                        GALLERY</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Info Floating Bar -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-4xl px-6 reveal stagger-3">
+            <div class="bg-white rounded-3xl p-6 shadow-2xl grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-[#F4F1DE] flex items-center justify-center text-[#E07A5F]">
+                        <i class="fa-solid fa-location-dot text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400">Location</p>
+                        <p class="font-bold text-sm">Opeikuma, Kasoa</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 border-l-0 md:border-l border-zinc-100 md:pl-6">
+                    <div class="w-12 h-12 rounded-2xl bg-[#F4F1DE] flex items-center justify-center text-[#81B29A]">
+                        <i class="fa-solid fa-wifi text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400">Connectivity</p>
+                        <p class="font-bold text-sm">Free High-Speed WiFi</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4 border-l-0 md:border-l border-zinc-100 md:pl-6">
+                    <div class="w-12 h-12 rounded-2xl bg-[#F4F1DE] flex items-center justify-center text-[#3D405B]">
+                        <i class="fa-solid fa-bolt text-xl"></i>
+                    </div>
+                    <div>
+                        <p class="text-[10px] uppercase font-bold text-zinc-400">Power</p>
+                        <p class="font-bold text-sm">24/7 Backup Gen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div class="reveal relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#F2CC8F]/30 rounded-full blur-3xl"></div>
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=1000"
+                        alt="Hospitality" class="w-full h-auto">
+                </div>
+                <div
+                    class="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl floating-card hidden lg:block">
+                    <div class="flex items-center gap-3">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <span class="font-bold text-sm">Open for Bookings</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-8 text-[#3D405B] leading-tight">Your quiet retreat away
+                    from the Kasoa bustle.</h2>
+                <p class="text-lg text-zinc-600 mb-8 leading-relaxed">
+                    Nzema Guest House was built on the philosophy of "Warmth and Wellness." We understand the heat and
+                    energy of Kasoa, which is why we've designed a space that feels cool, inviting, and remarkably
+                    quiet.
+                </p>
+                <ul class="space-y-4 mb-10">
+                    <li class="flex items-center gap-3 font-semibold">
+                        <i class="fa-solid fa-circle-check text-[#81B29A]"></i> 10 mins from Kasoa-Winneba Road
+                    </li>
+                    <li class="flex items-center gap-3 font-semibold">
+                        <i class="fa-solid fa-circle-check text-[#81B29A]"></i> Secure Gated Parking
+                    </li>
+                    <li class="flex items-center gap-3 font-semibold">
+                        <i class="fa-solid fa-circle-check text-[#81B29A]"></i> Modern AC & Water Heaters
+                    </li>
+                </ul>
+                <button
+                    class="border-2 border-[#3D405B] px-8 py-4 rounded-2xl font-bold hover:bg-[#3D405B] hover:text-white transition-all">OUR
+                    STORY</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms -->
+    <section id="rooms" class="py-24 bg-white rounded-t-[50px] shadow-2xl relative z-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div class="reveal">
+                    <span class="text-[#E07A5F] font-bold uppercase tracking-widest text-sm">Our Selection</span>
+                    <h2 class="text-4xl md:text-5xl font-bold mt-2">Restful Spaces</h2>
+                </div>
+                <p class="reveal stagger-1 text-zinc-500 max-w-sm">Every room is sanitized and prepared with fresh
+                    linens for every single guest.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Standard -->
+                <div
+                    class="reveal group card-zoom rounded-3xl bg-[#F4F1DE] overflow-hidden shadow-sm hover:shadow-xl transition-all border border-zinc-100">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-full object-cover transition-transform duration-700">
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold uppercase">
+                            Popular</div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">Standard Serenity</h3>
+                        <p class="text-zinc-500 text-sm mb-6">Perfect for solo travelers or business transits.</p>
+                        <div class="flex justify-between items-center border-t border-zinc-200 pt-6">
+                            <div>
+                                <span class="text-2xl font-bold">₵250</span>
+                                <span class="text-xs text-zinc-400">/night</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-[#3D405B] text-white rounded-full flex items-center justify-center hover:bg-[#E07A5F] transition-colors">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deluxe -->
+                <div
+                    class="reveal stagger-1 group card-zoom rounded-3xl bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all border border-zinc-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1591088398332-8a77d4972842?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">Deluxe Double</h3>
+                        <p class="text-zinc-500 text-sm mb-6">Spacious area with king-sized comfort and desk.</p>
+                        <div class="flex justify-between items-center border-t border-zinc-200 pt-6">
+                            <div>
+                                <span class="text-2xl font-bold">₵400</span>
+                                <span class="text-xs text-zinc-400">/night</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-[#3D405B] text-white rounded-full flex items-center justify-center hover:bg-[#E07A5F] transition-colors">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Executive -->
+                <div
+                    class="reveal stagger-2 group card-zoom rounded-3xl bg-[#F4F1DE] overflow-hidden shadow-sm hover:shadow-xl transition-all border border-zinc-100">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=600"
+                            class="w-full h-full object-cover transition-transform duration-700">
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold mb-2">Executive Suite</h3>
+                        <p class="text-zinc-500 text-sm mb-6">Luxury living with mini-fridge and separate lounge.</p>
+                        <div class="flex justify-between items-center border-t border-zinc-200 pt-6">
+                            <div>
+                                <span class="text-2xl font-bold">₵600</span>
+                                <span class="text-xs text-zinc-400">/night</span>
+                            </div>
+                            <button
+                                class="w-10 h-10 bg-[#3D405B] text-white rounded-full flex items-center justify-center hover:bg-[#E07A5F] transition-colors">
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Grid -->
+    <section id="amenities" class="py-32 bg-[#3D405B] text-white">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="reveal text-4xl md:text-5xl font-bold mb-6">Why Guests Love Us</h2>
+                <p class="reveal text-white/60 max-w-xl mx-auto">We focus on the essentials that make a guest house feel
+                    like home.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="reveal text-center group">
+                    <div
+                        class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#E07A5F] transition-all">
+                        <i class="fa-solid fa-shield-halved text-3xl"></i>
+                    </div>
+                    <h4 class="font-bold">Total Security</h4>
+                    <p class="text-sm text-white/40 mt-2">24hr Guards & CCTV</p>
+                </div>
+                <div class="reveal stagger-1 text-center group">
+                    <div
+                        class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#E07A5F] transition-all">
+                        <i class="fa-solid fa-fan text-3xl"></i>
+                    </div>
+                    <h4 class="font-bold">Air Conditioned</h4>
+                    <p class="text-sm text-white/40 mt-2">Individual Controls</p>
+                </div>
+                <div class="reveal stagger-2 text-center group">
+                    <div
+                        class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#E07A5F] transition-all">
+                        <i class="fa-solid fa-tv text-3xl"></i>
+                    </div>
+                    <h4 class="font-bold">Smart DSTV</h4>
+                    <p class="text-sm text-white/40 mt-2">All Premium Channels</p>
+                </div>
+                <div class="reveal stagger-3 text-center group">
+                    <div
+                        class="w-20 h-20 bg-white/10 rounded-3xl flex items-center justify-center mx-auto mb-6 group-hover:bg-[#E07A5F] transition-all">
+                        <i class="fa-solid fa-mug-hot text-3xl"></i>
+                    </div>
+                    <h4 class="font-bold">In-Room Coffee</h4>
+                    <p class="text-sm text-white/40 mt-2">Complimentary Sets</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#F4F1DE] pt-24 pb-12 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div
+                class="bg-[#E07A5F] rounded-[40px] p-12 text-white flex flex-col md:flex-row justify-between items-center mb-24 relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-4xl font-bold mb-4">Planning a trip to Kasoa?</h2>
+                    <p class="opacity-90">Call us today to secure the best rates available.</p>
+                </div>
+                <div class="relative z-10 mt-8 md:mt-0">
+                    <a href="tel:+233000000000"
+                        class="bg-white text-[#E07A5F] px-10 py-5 rounded-2xl font-bold text-lg hover:scale-105 transition-transform inline-block">
+                        +233 24 123 4567
+                    </a>
+                </div>
+                <!-- Abstract circle -->
+                <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-12 text-[#3D405B]">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center gap-2 mb-6">
+                        <div
+                            class="w-10 h-10 bg-[#E07A5F] rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                            N</div>
+                        <span class="font-bold text-xl tracking-tight uppercase">Nzema <span class="font-light">Guest
+                                House</span></span>
+                    </div>
+                    <p class="max-w-sm text-zinc-500 mb-8">
+                        The leading choice for Opeikuma residents and visitors looking for a high-standard, low-stress
+                        stay.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm hover:bg-[#E07A5F] hover:text-white transition-all"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm hover:bg-[#E07A5F] hover:text-white transition-all"><i
+                                class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Locate Us</h4>
+                    <p class="text-zinc-500 text-sm leading-loose">
+                        Opeikuma New Site,<br>
+                        Off the Kasoa-Winneba Road,<br>
+                        Kasoa, Central Region.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6">Quick Links</h4>
+                    <ul class="text-zinc-500 text-sm space-y-4">
+                        <li><a href="#" class="hover:text-[#E07A5F]">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-[#E07A5F]">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-[#E07A5F]">Refund Policy</a></li>
+                        <li><a href="#" class="hover:text-[#E07A5F]">Contact Support</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="mt-20 pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-400">
+                <p>&copy; 2024 Nzema Guest House. All rights reserved.</p>
+                <div class="flex gap-8 mt-4 md:mt-0 uppercase font-bold tracking-tighter">
+                    <a href="#">Designed with Love</a>
+                    <a href="#">Back to Top</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll logic
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth nav highlight or behavior
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('translate-y-[-10px]');
+            } else {
+                header.classList.remove('translate-y-[-10px]');
+            }
+        });
+    </script>
+</body>
+
+</html>

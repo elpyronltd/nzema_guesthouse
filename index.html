@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nzema Guest House | Your Sanctuary in Kasoa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4d4e;
+            /* Deep Teal */
+            --accent: #e67e22;
+            /* Warm Terracotta */
+            --soft-bg: #fdfaf5;
+            --text-main: #2c3e50;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--soft-bg);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-display {
+            font-family: 'Fraunces', serif;
+        }
+
+        .nav-blur {
+            background: rgba(253, 250, 245, 0.8);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-clip {
+            clip-path: ellipse(100% 100% at 50% 0%);
+        }
+
+        .card-hover {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .custom-shape-divider-bottom-168345 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom-168345 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 80px;
+            fill: var(--soft-bg);
+        }
+
+        .gallery-item {
+            border-radius: 40px 5px 40px 5px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 py-6 px-6 md:px-12 flex justify-between items-center transition-all duration-500"
+        id="main-nav">
+        <a href="#" class="flex items-center gap-2 group">
+            <div
+                class="w-10 h-10 bg-[#1a4d4e] rounded-xl flex items-center justify-center text-white font-bold rotate-3 group-hover:rotate-0 transition-transform">
+                N</div>
+            <span class="text-2xl font-display font-bold text-[#1a4d4e]">Nzema</span>
+        </a>
+
+        <div class="hidden md:flex items-center gap-10 font-medium text-sm uppercase tracking-widest text-[#1a4d4e]">
+            <a href="#about" class="hover:text-[#e67e22] transition">Story</a>
+            <a href="#rooms" class="hover:text-[#e67e22] transition">Rooms</a>
+            <a href="#amenities" class="hover:text-[#e67e22] transition">Amenity</a>
+            <a href="#contact" class="hover:text-[#e67e22] transition">Contact</a>
+        </div>
+
+        <button class="btn-primary px-8 py-3 rounded-full text-sm font-bold shadow-lg shadow-teal-900/20">
+            Book Stay
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[90vh] flex items-center pt-20 overflow-hidden">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+            <div class="z-10" id="hero-text">
+                <span
+                    class="inline-block px-4 py-1 rounded-full bg-orange-100 text-[#e67e22] font-bold text-xs uppercase tracking-tighter mb-6">Opeikuma,
+                    Kasoa</span>
+                <h1 class="text-6xl md:text-8xl leading-none mb-8 text-[#1a4d4e]">A Quiet <br><span
+                        class="italic font-light text-[#e67e22]">Retreat</span> <br>Just for You</h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-md font-light leading-relaxed">
+                    Rediscover peace at Nzema Guest House. Whether it's business or a weekend escape, we provide the
+                    warmth of home with the luxury you deserve.
+                </p>
+                <div class="flex items-center gap-6">
+                    <button class="btn-primary px-10 py-5 rounded-full font-bold">Check Availability</button>
+                    <div class="flex items-center gap-3 text-[#1a4d4e] font-bold cursor-pointer group">
+                        <span
+                            class="w-12 h-12 rounded-full border border-[#1a4d4e] flex items-center justify-center group-hover:bg-[#1a4d4e] group-hover:text-white transition-all">▶</span>
+                        Watch Tour
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative h-[600px]" id="hero-images">
+                <div class="absolute right-0 top-0 w-4/5 h-4/5 gallery-item shadow-2xl z-20">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1000"
+                        class="w-full h-full object-cover" alt="Guest Room">
+                </div>
+                <div class="absolute left-0 bottom-0 w-2/3 h-2/3 gallery-item shadow-xl border-8 border-white z-10">
+                    <img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&q=80&w=800"
+                        class="w-full h-full object-cover" alt="Lounge Area">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up">
+                    <p class="text-4xl font-display font-bold text-[#e67e22]">24/7</p>
+                    <p class="text-sm text-gray-500 uppercase tracking-widest mt-2">Check-in</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <p class="text-4xl font-display font-bold text-[#e67e22]">100%</p>
+                    <p class="text-sm text-gray-500 uppercase tracking-widest mt-2">Secure Parking</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <p class="text-4xl font-display font-bold text-[#e67e22]">Ultra</p>
+                    <p class="text-sm text-gray-500 uppercase tracking-widest mt-2">High Speed Wi-Fi</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <p class="text-4xl font-display font-bold text-[#e67e22]">Home</p>
+                    <p class="text-sm text-gray-500 uppercase tracking-widest mt-2">Cooked Meals</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Branch Explorer -->
+    <section id="locations" class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-[#e67e22] font-bold uppercase tracking-widest text-sm">Our Network</span>
+                <h2 class="text-5xl font-display mt-4 text-[#1a4d4e]">Select Your Destination</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Madina -->
+                <div class="branch-card relative h-[450px] rounded-[40px] overflow-hidden group cursor-pointer"
+                    data-aos="fade-up">
+                    <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Madina Branch">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1a4d4e] to-transparent opacity-80"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-3xl font-display">Madina</h3>
+                        <p class="text-sm opacity-70">Greater Accra</p>
+                    </div>
+                </div>
+
+                <!-- Pokuase -->
+                <div class="branch-card relative h-[450px] rounded-[40px] overflow-hidden group cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Pokuase Branch">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1a4d4e] to-transparent opacity-80"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-3xl font-display">Pokuase</h3>
+                        <p class="text-sm opacity-70">Greater Accra</p>
+                    </div>
+                </div>
+
+                <!-- Kasoa -->
+                <div class="branch-card relative h-[450px] rounded-[40px] overflow-hidden group cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Kasoa Branch">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1a4d4e] to-transparent opacity-80"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-3xl font-display">Kasoa</h3>
+                        <p class="text-sm opacity-70">Opeikuma, Central Region</p>
+                    </div>
+                </div>
+
+                <!-- Buduburam -->
+                <div class="branch-card relative h-[450px] rounded-[40px] overflow-hidden group cursor-pointer"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=600"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                        alt="Buduburam Branch">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#1a4d4e] to-transparent opacity-80"></div>
+                    <div class="absolute bottom-8 left-8 text-white">
+                        <h3 class="text-3xl font-display">Buduburam</h3>
+                        <p class="text-sm opacity-70">Central Region</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="py-32 px-6">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div data-aos="fade-right">
+                    <span class="text-[#e67e22] font-bold uppercase tracking-widest text-sm">Accommodation</span>
+                    <h2 class="text-5xl font-display mt-4 text-[#1a4d4e]">Our Curated Rooms</h2>
+                </div>
+                <p class="max-w-md text-gray-500 mb-2" data-aos="fade-left">
+                    Thoughtfully designed spaces in Opeikuma to ensure your rest is uninterrupted and your stay is
+                    productive.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Standard -->
+                <div class="card-hover bg-white rounded-[40px] overflow-hidden shadow-lg p-4" data-aos="fade-up">
+                    <div class="h-64 rounded-[30px] overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&q=80&w=800"
+                            class="w-full h-full object-cover" alt="Standard Room">
+                    </div>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-display text-[#1a4d4e]">The Classic Cozy</h3>
+                            <span class="text-sm font-bold text-[#e67e22]">₵350/n</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6">Perfect for solo travelers or short business stays.</p>
+                        <button
+                            class="w-full py-4 rounded-2xl border border-gray-100 hover:bg-[#1a4d4e] hover:text-white transition-colors font-bold">View
+                            Details</button>
+                    </div>
+                </div>
+
+                <!-- Executive -->
+                <div class="card-hover bg-white rounded-[40px] overflow-hidden shadow-lg p-4 mt-12 md:mt-0"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 rounded-[30px] overflow-hidden mb-6 relative">
+                        <span
+                            class="absolute top-4 right-4 bg-[#e67e22] text-white text-[10px] px-3 py-1 rounded-full uppercase font-bold">Popular</span>
+                        <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=800"
+                            class="w-full h-full object-cover" alt="Executive Room">
+                    </div>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-display text-[#1a4d4e]">Executive Suite</h3>
+                            <span class="text-sm font-bold text-[#e67e22]">₵600/n</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6">Spacious living area with workspace and premium linen.</p>
+                        <button
+                            class="w-full py-4 rounded-2xl border border-gray-100 hover:bg-[#1a4d4e] hover:text-white transition-colors font-bold">View
+                            Details</button>
+                    </div>
+                </div>
+
+                <!-- Family -->
+                <div class="card-hover bg-white rounded-[40px] overflow-hidden shadow-lg p-4 mt-12 md:mt-0"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 rounded-[30px] overflow-hidden mb-6">
+                        <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800"
+                            class="w-full h-full object-cover" alt="Family Room">
+                    </div>
+                    <div class="px-4 pb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-2xl font-display text-[#1a4d4e]">Heritage Loft</h3>
+                            <span class="text-sm font-bold text-[#e67e22]">₵850/n</span>
+                        </div>
+                        <p class="text-gray-500 text-sm mb-6">The ultimate family space with multi-room layout.</p>
+                        <button
+                            class="w-full py-4 rounded-2xl border border-gray-100 hover:bg-[#1a4d4e] hover:text-white transition-colors font-bold">View
+                            Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Grid -->
+    <section class="bg-[#1a4d4e] py-32 rounded-[60px] mx-4 text-white">
+        <div class="container mx-auto px-6 grid md:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="text-5xl font-display mb-10 leading-tight">Everything you need for a <span
+                        class="text-orange-400 italic font-light">seamless</span> stay.</h2>
+                <div class="space-y-8">
+                    <div class="flex gap-6 items-start">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">🍳
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Authentic Cuisine</h4>
+                            <p class="text-white/60">Enjoy hot, freshly prepared Ghanaian dishes upon request.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">🛡️
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Absolute Security</h4>
+                            <p class="text-white/60">24/7 security presence and CCTV for your total peace of mind.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start">
+                        <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">🚕
+                        </div>
+                        <div>
+                            <h4 class="text-xl font-bold mb-2">Airport Shuttles</h4>
+                            <p class="text-white/60">Reliable transport to and from Kotoka International Airport.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" data-aos="zoom-in">
+                <div class="gallery-item w-full h-[500px]">
+                    <img src="assets/ceo.jpeg"
+                        class="w-full h-full object-cover" alt="Dining area">
+                </div>
+                <div class="absolute -bottom-10 -left-10 bg-orange-400 p-10 rounded-[40px] hidden md:block">
+                    <p class="text-5xl font-display font-bold">15+</p>
+                    <p class="text-sm font-bold uppercase tracking-widest mt-2">Years of Service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-32 pb-12 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-12 mb-20">
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="text-3xl font-display text-[#1a4d4e] mb-8">Nzema Guest House</h2>
+                    <p class="text-gray-500 max-w-sm text-lg leading-relaxed mb-8">Providing exceptional comfort and
+                        authentic local hospitality in the heart of Opeikuma, Kasoa.</p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-12 h-12 rounded-2xl bg-[#1a4d4e] text-white flex items-center justify-center hover:bg-orange-400 transition-colors">f</a>
+                        <a href="#"
+                            class="w-12 h-12 rounded-2xl bg-[#1a4d4e] text-white flex items-center justify-center hover:bg-orange-400 transition-colors">in</a>
+                        <a href="#"
+                            class="w-12 h-12 rounded-2xl bg-[#1a4d4e] text-white flex items-center justify-center hover:bg-orange-400 transition-colors">ig</a>
+                    </div>
+                    <br>
+                    <p>Built with Precision by <a href="https://www.elpi.dev" class="font-bold text-orange-400">eLPi.dev</a></p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[#1a4d4e] mb-6 uppercase tracking-widest text-xs">Explore</h4>
+                    <ul class="space-y-4 text-gray-500">
+                        <li><a href="#" class="hover:text-orange-400 transition">Our Suites</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition">Guest Photos</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition">Nearby Sites</a></li>
+                        <li><a href="#" class="hover:text-orange-400 transition">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-[#1a4d4e] mb-6 uppercase tracking-widest text-xs">Reach Us</h4>
+                    <p class="text-gray-500 mb-4">Opeikuma, Kasoa<br>Central Region, Ghana</p>
+                    <p class="text-[#1a4d4e] font-bold">+233 (0) 244 555 666</p>
+                </div>
+            </div>
+            <div
+                class="pt-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-xs text-gray-400 gap-4">
+                <p>&copy; 2025 Sabony School Complex. All rights reserved.</p>
+                <p>Designed with for Kasoa's Finest</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1200,
+            once: true,
+            offset: 50
+        });
+
+        // GSAP Animations
+        window.addEventListener('DOMContentLoaded', () => {
+            gsap.from("#hero-text > *", {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out"
+            });
+
+            gsap.from("#hero-images div", {
+                scale: 0.8,
+                opacity: 0,
+                duration: 1.5,
+                stagger: 0.3,
+                ease: "expo.out"
+            });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-blur', 'py-4', 'shadow-sm');
+                nav.classList.remove('py-6');
+            } else {
+                nav.classList.remove('nav-blur', 'py-4', 'shadow-sm');
+                nav.classList.add('py-6');
+            }
+        });
+    </script>
+</body>
+
+</html>
